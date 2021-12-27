@@ -35,7 +35,13 @@ function App() {
                     // reemplazamos lo generado por etiquetas propias de formik, como son Form Fiel y ErrorMessage
                     <Form onSubmit={formik.handleSubmit}>
                     <label>Nombre</label>
-                    <Field name="name" type="text" />
+                    {/* PARA PODER USAR CSS DEBO USAR CLASS NAME  */}
+                    <Field name="name" type="text" className="input" />
+                    {/* En caso de querer utilizar un text area debo utilizar la propiead de as pudiendo usar textarea select colocando las opciones entre etiquetas  */}
+                    <Field name="select" as="select" className="input" >
+                        <option value="a">Chachito Feliz</option>
+                        <option value="b">Chachito Triste </option>
+                    </Field>
                     <ErrorMessage name="name"/>
                     <br/>
                     <label>Apellido</label>
