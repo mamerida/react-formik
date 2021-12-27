@@ -1,5 +1,6 @@
-//vamos a utilizar todas las dependencias que nos entrega formik para realizar nuestro formulario
-import {Formik ,Form,Field,ErrorMessage} from 'formik'
+//vamos a crear formularios basados en componentes y no asi en hooks 
+//utilizando el componente Formik directamente en mi return
+import {Formik} from 'formik'
 
 
 
@@ -32,21 +33,20 @@ function App() {
         onSubmit={values => console.log(values)}
     >
         {formik =>
-                    // reemplazamos lo generado por etiquetas propias de formik, como son Form Fiel y ErrorMessage
-                    <Form onSubmit={formik.handleSubmit}>
+                    <form onSubmit={formik.handleSubmit}>
                     <label>Nombre</label>
-                    <Field name="name" type="text" />
-                    <ErrorMessage name="name"/>
+                    <input type="text" {...formik.getFieldProps('name')}  />
+                    {formik.touched.name && formik.errors.name ? <div>{formik.errors.name}</div> : null}
                     <br/>
                     <label>Apellido</label>
-                    <Field name="lastname" type="text" />
-                    <ErrorMessage name="lastname"/>
+                    <input type="text" {...formik.getFieldProps('lastname')}  />
+                    {formik.touched.lastname && formik.errors.lastname ? <div>{formik.errors.lastname}</div> : null}
                     <br/>
                     <label>Email</label>
-                    <Field name="email" type="email" />
-                    <ErrorMessage name="email"/>
+                    <input type="email" {...formik.getFieldProps('email')} />
+                    {formik.touched.email && formik.errors.email ? <div>{formik.errors.email}</div> : null}
                     <button type="submit">Enviar</button>
-                    </Form>
+                    </form>
         }
     </Formik>
   );
