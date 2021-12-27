@@ -3,6 +3,7 @@ import {Formik ,Form,Field,ErrorMessage} from 'formik'
 import CheckBox from './components/CheckBox'
 import TextInput from './components/TextInput'
 import Select from './components/Select'
+import Radio from './components/Radio'
 
 
 
@@ -20,6 +21,11 @@ function App() {
     } else if(values.lastname.length < 5 ){
       errors.lastname = "El apellido es muy corto"
     }
+    //para que el error mesaje de radio ocurra debo agregar la validacion aca 
+    if(!values.radio){
+        errors.radio = "Requerido"
+    }
+
     
     
     return errors
@@ -30,7 +36,8 @@ function App() {
             name: '',
             lastname:'',
             email:"",
-            chancho:""
+            chancho:"",
+            radio:""
           }}
         validate={validate}
         onSubmit={values => console.log(values)}
@@ -54,6 +61,11 @@ function App() {
                             <option value="chanchitofeliz">Chanchito Feliz</option>
                             <option value="chanchitotriste">Chanchito Triste</option>
                         </Select>
+                        <Radio name = "radio" value="chanchito1" label="chanchito 1"/>
+                        <Radio name = "radio" value="chanchito2" label= "chanchito 2"/>
+                        <Radio name = "radio" value="chanchito3" label="chanchito 3"/>
+                        {/* para poder valir los campos lo debo realizar aca de manera obligatoria por que los radio button solo se puede sleeccionar uno  */}
+                        <ErrorMessage name="radio" />
                         <button type="submit">Enviar</button>
                     </Form>
         }
