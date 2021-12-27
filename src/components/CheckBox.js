@@ -4,7 +4,6 @@ import { useField } from "formik"
 //y colocarle el tipo para poder usar la prop checked
 const CheckBox = ({children,...props}) => {
     const [field,meta] = useField({...props, type:'checkbox'})
-    console.log({field,meta})
     return(
         <div>
             <label>
