@@ -5,7 +5,8 @@ const TextInput = ({label,...props}) =>{
     //para esto le paso las propieades que tome en el front al useField
     const [field , meta] = useField(props)
 
-    console.log({field,meta})
+
+    
     return(
         <div>
             <label>{label}</label>
